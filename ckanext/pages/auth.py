@@ -14,6 +14,29 @@ def sysadmin(context, data_dict):
 def anyone(context, data_dict):
     return {'success': True}
 
+def only_moderator(context, data_dict=None):
+    # Get the user name of the logged-in user.
+    user_name = context['user']
+
+    # Have logged-in user's user name, get their user id
+    convert_user_name_or_id_to_id = p.toolkit.get_converter('convert_user_name_or_id_to_id')
+    user_id = convert_user_name_or_id_to_id(user_name, context)
+
+    # Check current user organization list with manage_group permission
+    param = {
+        'id': user_id,
+        'permission': 'manage_group',
+    }
+    orgs = p.toolkit.get_action('organization_list_for_user')(data_dict=param)
+
+    # Test whether the user is a admin of an organization
+    if len(orgs) > 1:
+        return {'success': True}
+    else:
+        return {
+            'success': False,
+            'msg': 'Only moderator are allowed'
+        }
 
 # Starting from 2.2 you need to explicitly flag auth functions that allow
 # anonymous access
@@ -77,8 +100,8 @@ if p.toolkit.check_ckan_version(min_version='2.2'):
 
 
 pages_show = page_privacy
-pages_update = sysadmin
-pages_delete = sysadmin
+pages_update = only_moderator
+pages_delete = only_moderator
 pages_list = anyone
 pages_upload = sysadmin
 org_pages_show = page_privacy
