@@ -1,5 +1,5 @@
 
-![Tests](https://github.com/ckan/ckanext-pages/workflows/Tests/badge.svg?branch=master)
+![Tests](https://github.com/ryanda/ckanext-pages/workflows/Tests/badge.svg?branch=master)
 
 ckanext-pages
 =============
@@ -16,7 +16,7 @@ Use `pip` to install this plugin. This example installs it in `/home/www-data/py
 
 ```
 source /home/www-data/pyenv/bin/activate
-pip install -e 'git+https://github.com/ckan/ckanext-pages.git#egg=ckanext-pages'
+pip install -e 'git+https://github.com/ryanda/ckanext-pages.git#egg=ckanext-pages'
 ```
 
 Make sure to add `pages` to `ckan.plugins` in your config file:
