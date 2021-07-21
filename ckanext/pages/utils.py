@@ -216,8 +216,9 @@ def pages_delete(page, page_type='pages'):
                 return tk.redirect_to('pages.%s' % endpoint)
             else:
                 tk.redirect_to('%s_index' % page_type)
-        else:
-            return tk.abort(404, _('Page Not Found'))
+#         - disable throw 404 on GET method
+#         else:
+#             return tk.abort(404, _('Page Not Found'))
     except tk.NotAuthorized:
         return tk.abort(401, _('Unauthorized to delete page'))
     except tk.ObjectNotFound:
