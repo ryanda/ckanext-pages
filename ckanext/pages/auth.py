@@ -99,16 +99,16 @@ if p.toolkit.check_ckan_version(min_version='2.2'):
     page_privacy = p.toolkit.auth_allow_anonymous_access(page_privacy)
 
 
-pages_show = page_privacy
+pages_show = anyone
 pages_update = only_moderator
 pages_delete = only_moderator
 pages_list = anyone
 pages_upload = sysadmin
-org_pages_show = page_privacy
-org_pages_update = page_group_admin
-org_pages_delete = page_group_admin
+org_pages_show = anyone
+org_pages_update = only_moderator
+org_pages_delete = only_moderator
 org_pages_list = anyone
-group_pages_show = page_privacy
-group_pages_update = page_group_admin
-group_pages_delete = page_group_admin
+group_pages_show = anyone
+group_pages_update = only_moderator
+group_pages_delete = only_moderator
 group_pages_list = anyone
